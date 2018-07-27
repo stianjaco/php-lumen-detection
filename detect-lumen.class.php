@@ -112,7 +112,23 @@ class detectLumen {
         return $b + ($g << 0x8) + ($r << 0x10);
     }
 
-    private function RGBtoHEX($RGB) {
+    private function RGBtoHEX($RGB = null) 
+    {
+        list($R, $G, $B ) = !is_array($RGB) ? explode( ",", $RGB, 3 ) : $RGB;
+
+        $R = dechex($R);
+        if (strlen($R)<2)
+            $R = '0'.$R;
+
+        $G = dechex($G);
+        if (strlen($G)<2)
+            $G = '0'.$G;
+
+        $B = dechex($B);
+        if (strlen($B)<2)
+            $B = '0'.$B;
+
+        return '#' . $R . $G . $B;
 
     }
 
